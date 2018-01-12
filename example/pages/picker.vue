@@ -2,7 +2,7 @@
   <cube-page type="picker-view" title="Picker" desc="">
     <div slot="content">
       <cube-button-group>
-        <cube-button @click="showPicker">Picker</cube-button>
+        <cube-button @click="showPicker">{{item1}}</cube-button>
         <cube-button @click="showMutiPicker">Multi-column Picker</cube-button>
         <cube-button @click="showAliasPicker">Use Alias</cube-button>
         <cube-button @click="showSetDataPicker">Use SetData</cube-button>
@@ -23,14 +23,13 @@
   createAPI(Vue, NormalTimePicker, ['select', 'cancel'], false)
 
   export default {
+    data () {
+      return {
+        item1: 'Picker',
+        picker: null
+      }
+    },
     mounted() {
-      this.picker = this.$createPicker({
-        title: 'Picker',
-        data: [data1],
-        onSelect: this.selectHandle,
-        onCancel: this.cancelHandle
-      })
-
       this.mutiPicker = this.$createPicker({
         title: 'Multi-column Picker',
         data: [data1, data2, data3],
@@ -63,6 +62,13 @@
     },
     methods: {
       showPicker() {
+        let _vm = this
+        this.picker = this.$createPicker({
+          title: _vm.item1,
+          data: [data1],
+          onSelect: this.selectHandle,
+          onCancel: this.cancelHandle
+        })
         this.picker.show()
       },
       showMutiPicker() {

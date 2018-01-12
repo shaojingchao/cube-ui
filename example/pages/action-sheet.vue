@@ -41,6 +41,7 @@
             }).show()
           }
         })
+        console.log(this.actionSheet)
         this.actionSheet.show()
       },
       showActive() {

@@ -53,6 +53,9 @@
         return this.type === 'loading'
       }
     },
+    mounted () {
+      console.log(this)
+    },
     methods: {
       show() {
         this.isVisible = true

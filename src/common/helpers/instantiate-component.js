@@ -7,6 +7,8 @@ export default function instantiateComponent(Vue, Component, data, renderFn) {
       if (children && !Array.isArray(children)) {
         children = [children]
       }
+      console.log('createElement', createElement)
+      console.log(renderData)
       return createElement(Component, renderData, children || [])
     },
     methods: {

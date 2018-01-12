@@ -106,6 +106,9 @@
         }
       }
     },
+    mounted () {
+      console.log('__cube__parent', this, this.__cube__parent)
+    },
     methods: {
       confirm() {
         if (!this._canConfirm()) {

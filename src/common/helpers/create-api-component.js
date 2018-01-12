@@ -1,7 +1,7 @@
 import instantiateComponent from './instantiate-component'
 import parseRenderData from './parse-render-data'
 
-export default function createAPIComponent(Vue, Component, events = [], single = false) {
+export default function createAPIComponent(Vue, Component, events = [], single = true) {
   let singleComponent
   let singleInstance
   const beforeFns = []
@@ -62,6 +62,8 @@ export default function createAPIComponent(Vue, Component, events = [], single =
     create(config, renderFn, single) {
       const ownerInstance = this
       const component = api.open(parseRenderData(config, events), renderFn, single)
+      console.log('=======ownerInstance=======', ownerInstance)
+      console.log('=======component=======', component)
       if (component.__cube__parent !== ownerInstance) {
         component.__cube__parent = ownerInstance
         const beforeDestroy = function () {
